@@ -21,12 +21,19 @@ const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'noreply@ulivya.com';
 
-// Connect to MongoDB
+// MongoDB connection with error handling
+let mongoDBConnected = false;
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ulivya-store', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}).then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+}).then(() => {
+  mongoDBConnected = true;
+  console.log('Connected to MongoDB');
+}).catch(err => {
+  mongoDBConnected = false;
+  console.error('MongoDB connection error:', err.message);
+  console.warn('App will continue but DB features may not work');
+});
 
 // Order schema
 const orderSchema = new mongoose.Schema({
@@ -49,20 +56,12 @@ const orderSchema = new mongoose.Schema({
 
 const Order = mongoose.model('Order', orderSchema);
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname)));
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
-});
-
-// Root route serves the frontend page
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Catch-all for frontend paths (if using client-side routing)
@@ -107,7 +106,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
   }
 });
 
-app.post('/webhook', express.raw({type: 'application/json'}), (req, res) => {
+app.post('/webhook', express.raw({type: 'application/json'}), async (req, res) => {
   const sig = req.headers['stripe-signature'];
 
   if (!webhookSecret) {
@@ -179,6 +178,25 @@ app.post('/webhook', express.raw({type: 'application/json'}), (req, res) => {
 
 app.get('/admin/orders', async (req, res) => {
   try {
+    if (!mongoDBConnected) {
+      return res.status(503).send(`
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <title>Admin Dashboard</title>
+          <script src="https://cdn.tailwindcss.com"></script>
+        </head>
+        <body class="bg-red-50 p-6">
+          <div class="max-w-md mx-auto bg-white p-6 rounded shadow">
+            <h1 class="text-2xl font-bold text-red-600 mb-4">Database Connection Error</h1>
+            <p class="text-gray-700">MongoDB is not connected. Please configure MONGODB_URI environment variable.</p>
+            <p class="text-gray-500 text-sm mt-4">For local development, ensure MongoDB is running on mongodb://localhost:27017</p>
+          </div>
+        </body>
+        </html>
+      `);
+    }
     const orders = await Order.find().sort({ created: -1 });
     const html = `
       <!DOCTYPE html>
@@ -204,7 +222,7 @@ app.get('/admin/orders', async (req, res) => {
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              ${orders.map(order => `
+              ${orders.length === 0 ? '<tr><td colspan="6" class="px-6 py-4 text-center text-gray-500">No orders found</td></tr>' : orders.map(order => `
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${order.id}</td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${order.customer_email}</td>
@@ -222,8 +240,23 @@ app.get('/admin/orders', async (req, res) => {
     `;
     res.send(html);
   } catch (error) {
-    console.error('Error fetching orders for admin:', error);
-    res.status(500).send('Error loading admin dashboard');
+    console.error('Error fetching orders for admin:', error.message);
+    res.status(500).send(`
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <title>Admin Dashboard Error</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+      </head>
+      <body class="bg-red-50 p-6">
+        <div class="max-w-md mx-auto bg-white p-6 rounded shadow">
+          <h1 class="text-2xl font-bold text-red-600 mb-4">Error Loading Dashboard</h1>
+          <p class="text-gray-700">${error.message}</p>
+        </div>
+      </body>
+      </html>
+    `);
   }
 });
 
