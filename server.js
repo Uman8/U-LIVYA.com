@@ -7,6 +7,14 @@ const mongoose = require('mongoose');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Middleware for JSON form data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Serve the static frontend in root
+app.use(express.static(path.join(__dirname)));
+
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -50,6 +58,19 @@ app.get('/', (req, res) => {
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
+});
+
+// Root route serves the frontend page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Catch-all for frontend paths (if using client-side routing)
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api') || req.path === '/webhook' || req.path === '/health' || req.path.startsWith('/admin')) {
+    return next();
+  }
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.post('/api/create-checkout-session', async (req, res) => {
