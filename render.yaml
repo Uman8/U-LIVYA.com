@@ -1,0 +1,11 @@
+services:
+  - type: web_service
+    name: ulivya-store-frontend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: "3000"
+    branch: main

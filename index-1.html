@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulivya | Elite Curations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ulivya-green: #2D3A30;
+            --ulivya-cream: #F9F7F2;
+            --ulivya-gold: #C5A059;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--ulivya-cream); color: var(--ulivya-green); }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        .bg-ulivya-green { background-color: var(--ulivya-green); }
+        .text-ulivya-gold { color: var(--ulivya-gold); }
+        .border-ulivya-gold { border-color: var(--ulivya-gold); }
+        .nav-link { position: relative; transition: color 0.3s; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -2px; left: 0; background-color: var(--ulivya-gold); transition: width 0.3s; }
+        .nav-link:hover::after { width: 100%; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-ulivya-green text-white text-[10px] tracking-[0.2em] uppercase py-2 text-center">
+        LOVE IT, LIVE IT ULIVYA
+    </div>
+
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <div class="flex items-center gap-12">
+                <div class="text-3xl font-bold tracking-tighter serif">U-LIVYA</div>
+                <nav class="hidden lg:flex gap-8 text-[11px] font-bold tracking-widest uppercase">
+                    <a href="#" class="nav-link">Shop</a>
+                    <a href="#" class="nav-link">Collections</a>
+                    <a href="#" class="nav-link">Solutions</a>
+                    <a href="#" class="nav-link text-ulivya-gold">Membership</a>
+                    <a href="#" class="nav-link">Journal</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <div class="hidden md:block text-right mr-4 border-r pr-6 border-gray-200">
+                    <p class="text-[10px] uppercase tracking-wider text-gray-400">Account</p>
+                    <p class="text-[11px] font-bold">User: Sarah | <span class="text-ulivya-gold uppercase">Tier: Elite</span></p>
+                </div>
+                <button class="hover:text-ulivya-gold transition"><i data-lucide="search" class="w-5 h-5"></i></button>
+                <button class="hover:text-ulivya-gold transition relative">
+                    <i data-lucide="heart" class="w-5 h-5"></i>
+                    <span class="absolute -top-2 -right-2 bg-ulivya-gold text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                </button>
+                <button aria-label="cart" class="hover:text-ulivya-gold transition relative">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span id="cartBadge" class="absolute -top-2 -right-2 bg-ulivya-green text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center">1</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-ulivya-green/5 overflow-x-auto">
+            <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between gap-8 text-[10px] font-bold tracking-widest uppercase whitespace-nowrap">
+                <a href="#" class="hover:text-ulivya-gold">[ Kitchen & Dining ]</a>
+                <a href="#" class="hover:text-ulivya-gold">[ Home Organization ]</a>
+                <a href="#" class="hover:text-ulivya-gold">[ Cleaning & Care ]</a>
+                <a href="#" class="hover:text-ulivya-gold">[ Lifestyle Supplies ]</a>
+                <a href="#" class="text-ulivya-gold">[ Member Deals ]</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative h-[70vh] flex items-center bg-[#D1D5DB]">
+        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=2000" 
+             alt="Kitchen" class="absolute inset-0 w-full h-full object-cover grayscale-[20%]">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="relative max-w-7xl mx-auto px-6 text-white">
+            <h1 class="text-6xl md:text-7xl mb-6 leading-tight max-w-2xl">Elevate Your Living. <br><span class="italic">Exclusive Curations.</span></h1>
+            <p class="text-lg mb-10 max-w-md opacity-90 font-light">Discover premium supplies for a well-ordered life. Membership unlocks unique essentials.</p>
+            <div class="flex gap-4">
+                <button class="bg-ulivya-gold hover:bg-white hover:text-ulivya-green transition px-10 py-4 text-[11px] font-bold tracking-widest uppercase">Start Elite Experience</button>
+                <p class="text-[10px] self-center tracking-widest uppercase opacity-80">Members Only Access</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl tracking-widest uppercase mb-2">Curated Members Selection</h2>
+            <div class="w-24 h-px bg-ulivya-gold mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white p-4 group transition-all duration-500 hover:shadow-xl">
+                <div class="relative aspect-[4/5] bg-gray-100 mb-6 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&q=90&w=900" alt="Ceramic dinner set" 
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute top-4 left-4 bg-white/90 px-3 py-1 text-[9px] font-bold tracking-tighter uppercase">Member Access</div>
+                </div>
+                <h3 class="text-md font-bold mb-2">Handcrafted Ceramic Dinner Set (Set of 12)</h3>
+                <div class="mb-4">
+                    <span class="text-gray-400 line-through text-xs">$348.00</span>
+                    <span class="text-ulivya-gold font-bold ml-2">$279.00 <span class="text-[9px] uppercase tracking-tighter">Members</span></span>
+                </div>
+                <div class="flex gap-2">
+                    <button class="flex-1 border border-ulivya-green py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-ulivya-green hover:text-white transition">View Details</button>
+                    <button class="flex-1 bg-ulivya-green text-white py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-ulivya-gold transition">Add to Bag</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 group transition-all duration-500 hover:shadow-xl">
+                <div class="relative aspect-[4/5] bg-gray-100 mb-6 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=90&w=900" alt="Linen bedding set" 
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                </div>
+                <h3 class="text-md font-bold mb-2">Pure Linen Bedding Set (Queen, White)</h3>
+                <div class="mb-4">
+                    <span class="text-gray-400 line-through text-xs">$265.00</span>
+                    <span class="text-ulivya-gold font-bold ml-2">$210.00 <span class="text-[9px] uppercase tracking-tighter">Members</span></span>
+                </div>
+                <div class="flex gap-2">
+                    <button class="flex-1 border border-ulivya-green py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-ulivya-green hover:text-white transition">View Details</button>
+                    <button class="flex-1 bg-ulivya-green text-white py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-ulivya-gold transition">Add to Bag</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 group transition-all duration-500 hover:shadow-xl">
+                <div class="relative aspect-[4/5] bg-gray-100 mb-6 overflow-hidden">
+                    <img src="https://picsum.photos/id/1069/900/1125" alt="Bamboo pantry containers" 
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                </div>
+                <h3 class="text-md font-bold mb-2">Aesthetic Bamboo Pantry Containers (Set of 8)</h3>
+                <div class="mb-4">
+                    <span class="text-gray-400 line-through text-xs">$189.00</span>
+                    <span class="text-ulivya-gold font-bold ml-2">$149.00 <span class="text-[9px] uppercase tracking-tighter">Members</span></span>
+                </div>
+                <div class="flex gap-2">
+                    <button class="flex-1 border border-ulivya-green py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-ulivya-green hover:text-white transition">View Details</button>
+                    <button class="add-to-bag flex-1 bg-ulivya-green text-white py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-ulivya-gold transition">Add to Bag</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 group transition-all duration-500 hover:shadow-xl">
+                <div class="relative aspect-[4/5] bg-gray-100 mb-6 overflow-hidden">
+                    <img src="https://picsum.photos/id/1031/900/1125" alt="Copper cookware set" 
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                </div>
+                <h3 class="text-md font-bold mb-2">Premium Copper Cookware Set (5 Piece)</h3>
+                <div class="mb-4">
+                    <span class="text-gray-400 line-through text-xs">$495.00</span>
+                    <span class="text-ulivya-gold font-bold ml-2">$395.00 <span class="text-[9px] uppercase tracking-tighter">Members</span></span>
+                </div>
+                <div class="flex gap-2">
+                    <button class="flex-1 border border-ulivya-green py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-ulivya-green hover:text-white transition">View Details</button>
+                    <button class="add-to-bag flex-1 bg-ulivya-green text-white py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-ulivya-gold transition">Add to Bag</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#2D3A30] text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold serif mb-4">Ulivya Membership</h3>
+                <p class="text-sm leading-relaxed">Join the Elite tier for 24/7 access to curated deals, free gift wrapping, and personalized sourcing.</p>
+            </div>
+            <div class="md:col-span-2">
+                <form id="newsletterForm" class="grid sm:grid-cols-3 gap-3">
+                    <input id="emailInput" type="email" required placeholder="Email address" class="p-3 rounded border border-gray-300 text-ulivya-green placeholder:text-gray-500" />
+                    <button class="sm:col-span-2 bg-ulivya-gold text-ulivya-green font-bold py-3 rounded uppercase tracking-wider hover:bg-white hover:text-ulivya-green transition">Join Waitlist</button>
+                </form>
+                <p id="newsletterMsg" class="text-xs mt-2 text-gray-300"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart drawer -->
+    <div id="cartDrawerOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 z-40"></div>
+    <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full md:w-96 bg-white text-ulivya-green transform translate-x-full transition-transform duration-300 z-50 shadow-2xl">
+        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+            <h3 class="text-xl font-bold">Your Cart</h3>
+            <button id="closeCartDrawer" class="text-gray-500 hover:text-ulivya-green">Close</button>
+        </div>
+        <div id="cartItems" class="p-6 space-y-4 overflow-y-auto h-[calc(100%-180px)]"></div>
+        <div class="p-6 border-t border-gray-200">
+            <p class="text-sm text-gray-500">Subtotal: <span id="cartSubtotal" class="font-bold">$0.00</span></p>
+            <button id="checkoutBtn" class="mt-4 w-full bg-ulivya-green text-white py-3 text-sm font-bold rounded hover:bg-ulivya-gold">Checkout</button>
+        </div>
+    </aside>
+
+    <footer class="bg-ulivya-green text-white py-10">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-lg font-bold mb-3">Ulivya</h4>
+                <p class="text-sm text-gray-200">Premium curated home essentials for discerning members. Founded 2024.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-3">Quick Links</h4>
+                <ul class="text-sm space-y-2 text-gray-200">
+                    <li><a href="#" class="hover:text-ulivya-gold">Shop</a></li>
+                    <li><a href="#" class="hover:text-ulivya-gold">Member Deals</a></li>
+                    <li><a href="#" class="hover:text-ulivya-gold">Journal</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-3">Contact</h4>
+                <p class="text-sm text-gray-200">hello@ulivya.com</p>
+                <p class="text-sm text-gray-200">+1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="text-center text-xs text-gray-300 mt-8">&copy; 2026 Ulivya. All rights reserved.</div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const CART_KEY = 'ulivya_cart';
+        let cartItems = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+
+        const cartBadge = document.getElementById('cartBadge');
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartDrawerOverlay = document.getElementById('cartDrawerOverlay');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const cartSubtotal = document.getElementById('cartSubtotal');
+
+        function saveCart() {
+            localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+        }
+
+        function updateCartBadge() {
+            const total = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            if (cartBadge) cartBadge.textContent = total;
+        }
+
+        function refreshCartDrawer() {
+            const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            cartItemsContainer.innerHTML = '';
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-sm text-gray-500">Your cart is empty.</p>';
+            } else {
+                cartItems.forEach((item, i) => {
+                    const itemRow = document.createElement('div');
+                    itemRow.className = 'flex justify-between items-start';
+                    itemRow.innerHTML = `
+                        <div>
+                            <p class="font-bold">${item.name}</p>
+                            <p class="text-xs text-gray-500">Qty: ${item.quantity}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-bold">$${(item.price * item.quantity).toFixed(2)}</p>
+                            <button data-index="${i}" class="remove-from-cart text-xs text-red-500 hover:underline">Remove</button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemRow);
+                });
+            }
+            cartSubtotal.textContent = `$${total.toFixed(2)}`;
+
+            cartItemsContainer.querySelectorAll('.remove-from-cart').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const index = Number(event.currentTarget.dataset.index);
+                    cartItems.splice(index, 1);
+                    saveCart();
+                    refreshCartDrawer();
+                    updateCartBadge();
+                });
+            });
+        }
+
+        function openCart() {
+            cartDrawer.classList.remove('translate-x-full');
+            cartDrawer.classList.add('translate-x-0');
+            cartDrawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            cartDrawerOverlay.classList.add('opacity-100');
+            refreshCartDrawer();
+        }
+
+        function closeCart() {
+            cartDrawer.classList.add('translate-x-full');
+            cartDrawer.classList.remove('translate-x-0');
+            cartDrawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+            cartDrawerOverlay.classList.remove('opacity-100');
+        }
+
+        function addItemToCart(name, price) {
+            const existing = cartItems.find(item => item.name === name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cartItems.push({ name, price, quantity: 1 });
+            }
+            saveCart();
+            updateCartBadge();
+            refreshCartDrawer();
+        }
+
+        function gatherProductInfo(button) {
+            const card = button.closest('.bg-white');
+            if (!card) return null;
+            const name = card.querySelector('h3')?.textContent?.trim() || 'Product';
+            const priceText = card.querySelector('.text-ulivya-gold')?.textContent?.trim() || '$0';
+            const price = Number(priceText.replace(/[^0-9.]/g, '')) || 0;
+            return { name, price };
+        }
+
+        document.querySelectorAll('.add-to-bag').forEach(button => {
+            const buyNowButton = document.createElement('button');
+            buyNowButton.className = 'buy-now flex-1 bg-ulivya-gold text-ulivya-green py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-ulivya-green transition';
+            buyNowButton.textContent = 'Buy Now';
+            button.parentElement.insertBefore(buyNowButton, button.nextElementSibling);
+
+            button.addEventListener('click', () => {
+                const item = gatherProductInfo(button);
+                if (!item) return;
+                addItemToCart(item.name, item.price);
+                alert('Added to bag! Total items: ' + cartItems.reduce((sum, item) => sum + item.quantity, 0));
+            });
+
+            buyNowButton.addEventListener('click', () => {
+                const item = gatherProductInfo(button);
+                if (!item) return;
+                addItemToCart(item.name, item.price);
+                openCart();
+            });
+        });
+
+        document.querySelector('button[aria-label="cart"]').addEventListener('click', openCart);
+        document.getElementById('closeCartDrawer').addEventListener('click', closeCart);
+        cartDrawerOverlay.addEventListener('click', closeCart);
+        document.getElementById('checkoutBtn').addEventListener('click', async () => {
+            if (cartItems.length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/create-checkout-session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ items: cartItems }),
+                });
+
+                const data = await response.json();
+                if (!response.ok || !data.url) {
+                    throw new Error(data.error || 'Unable to create session');
+                }
+
+                window.location = data.url;
+            } catch (error) {
+                console.error('Checkout error:', error);
+                alert('Unable to proceed to payment at this time. Please try again.');
+            }
+        });
+
+        updateCartBadge();
+        refreshCartDrawer();
+
+        document.getElementById('newsletterForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const email = document.getElementById('emailInput').value.trim();
+            document.getElementById('newsletterMsg').textContent = `Thanks! ${email} is on the membership waitlist.`;
+            event.target.reset();
+        });
+    </script>
+</body>
+</html>

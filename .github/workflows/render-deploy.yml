@@ -1,0 +1,27 @@
+name: Render Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Login to Render
+        uses: render-examples/action@v2
+        with:
+          apiKey: ${{ secrets.RENDER_API_KEY }}
+
+      - name: Trigger Render deploy
+        uses: render-examples/action@v2
+        with:
+          apiKey: ${{ secrets.RENDER_API_KEY }}
+          serviceId: ${{ secrets.RENDER_SERVICE_ID }}
+          waitForService: true
