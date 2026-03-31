@@ -1,5 +1,2 @@
-Username: geraumankumar_db_user
-Password: r4kWyt2qHRGjKMwu
 
 
-mongodb+srv://geraumankumar_db_user:r4kWyt2qHRGjKMwu@ulivya-store.kgkyvw6.mongodb.net/
